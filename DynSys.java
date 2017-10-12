@@ -1,12 +1,10 @@
 /**
-Dynamische Systemen
- Arne Vansteenkiste
- */
+    Dynamische Systemen
+    Arne Vansteenkiste
+*/
 import javax.swing.*;
 import java.awt.*;
 import be.barnex.ajuin.Ajuin;
-import be.ac.rug.twi.util.*;
-import javax.swing.*;
 
 public class DynSys {
     
@@ -15,136 +13,101 @@ public class DynSys {
         
         
         /*
-         1D-maps
-         */
+            1D-maps
+        */
         
         Lyapunov1D.skip = -5;
         
         //  (1)     FlowView Logistieke afbeelding -> bifurcatiediagram
-        ////*
-        int WIDTH = 700; int HEIGHT = 512;
+        /*
+        final int WIDTH = 700, HEIGHT = 512;
         Map map = new Logistic();
         GridModel model = new GridModel(map, WIDTH, HEIGHT, 0, 0, 4, 1);
         Controller c = new Controller(model);
         FlowView flow = new FlowView(model);
-        JFrame frame = flow.showFrame(c);
+        flow.showFrame(c);
         //*/
-        
-        TextReader.in.readLine();TextReader.in.readLine();System.out.println("stop");
-        c.stop();
-        frame.dispose();
-        TextReader.in.readLine();TextReader.in.readLine();System.out.println("tent");
         
         //  (2)     FlowView Tent-afbeelding -> bifurcatiediagram.
-        ///*
-        //final int
-        WIDTH = 700; HEIGHT = 512;
-        map = new Tent();
-        model = new GridModel(map, WIDTH, HEIGHT, 0, 0, 1, 1);
-        c = new Controller(model);
-        flow = new FlowView(model);
-        frame = flow.showFrame(c);
+        /*
+        final int WIDTH = 700, HEIGHT = 512;
+        Map map = new Tent();
+        GridModel model = new GridModel(map, WIDTH, HEIGHT, 0, 0, 1, 1);
+        Controller c = new Controller(model);
+        FlowView flow = new FlowView(model);
+        flow.showFrame(c);
         //*/
-        
-        TextReader.in.readLine();TextReader.in.readLine();System.out.println("stop");
-        c.stop();
-        frame.dispose();
-        TextReader.in.readLine();TextReader.in.readLine();System.out.println("lyap");
         
         // (3)      Flow + Lyapunov Logistieke + introductie kleuren.
-        ///*
-        WIDTH = 500; HEIGHT = 400;
-        map = new Logistic();
-        model = new GridModel(map, WIDTH, HEIGHT, 0, 0, 4, 1);
-        c = new Controller(model);
-        flow = new FlowView(model);
-        frame = flow.showFrame(c);
+        /*
+        final int WIDTH = 500, HEIGHT = 400;
+        Map map = new Logistic();
+        GridModel model = new GridModel(map, WIDTH, HEIGHT, 0, 0, 4, 1);
+        Controller c = new Controller(model);
+        FlowView flow = new FlowView(model);
+        flow.showFrame(c);
         Lyapunov1D lyap = new Lyapunov1D(model);
-        JFrame frame2 = new FlowView(lyap).showFrame(c);
+        new FlowView(lyap).showFrame(c);
         //*/
-        
-        TextReader.in.readLine();TextReader.in.readLine();System.out.println("stop");
-        c.stop();
-        frame.dispose();
-        frame2.dispose();
-        TextReader.in.readLine();TextReader.in.readLine();System.out.println("basin");
         
         // (4)  Flow + Lyapunov + Basin Logistieke
-        ///*
-        WIDTH = 500; HEIGHT = 300;
+        /*
+        final int WIDTH = 500, HEIGHT = 300;
         ColorMap map1d = new ColorMap1D(HEIGHT);
-        map = new Logistic();
-        model = new GridModel(map, WIDTH, HEIGHT, 0, 0, 4, 1);
-        c = new Controller(model);
-        flow = new FlowView(model);
+        Map map = new Logistic();
+        GridModel model = new GridModel(map, WIDTH, HEIGHT, 0, 0, 4, 1);
+        Controller c = new Controller(model);
+        FlowView flow = new FlowView(model);
         flow.setColorMap(map1d);
-        frame = flow.showFrame(c);
-        lyap = new Lyapunov1D(model);
-        frame2 = new FlowView(lyap).showFrame(c);
+        flow.showFrame(c);
+        Lyapunov1D lyap = new Lyapunov1D(model);
+        new FlowView(lyap).showFrame(c);
         BasinView basin = new BasinView(model);
         basin.setColorMap(map1d);
-        JFrame frame3 = basin.showFrame(c);
+        basin.showFrame(c);
         //*/
         
-        TextReader.in.readLine();TextReader.in.readLine();System.out.println("stop");
-        c.stop();
-        frame.dispose();
-        frame2.dispose();
-        frame3.dispose();
-        TextReader.in.readLine();TextReader.in.readLine();System.out.println("henon");
-        
+    
         /*
-         2D maps
-         */
+            2D maps
+        */
         
         // (5)      Henon
-        ///*
-        WIDTH = 500; HEIGHT = 500;
-        map = new Henon(1.4, -0.3);
-        double xmin = -3, ymin = -3, xmax = 3, ymax = 3;
-        model = new GridModel(map, WIDTH, HEIGHT, xmin, ymin, xmax, ymax);
-        c = new Controller(model);
+        /*
+        final int WIDTH = 500, HEIGHT = 500;
+        Map map = new Henon(1.5, -0.8);
+        final double xmin = -2, ymin = -2, xmax = 2, ymax = 2;
+        GridModel model = new GridModel(map, WIDTH, HEIGHT, xmin, ymin, xmax, ymax);
+        Controller c = new Controller(model);
         ColorMap map2d = new ColorMap2D(WIDTH, HEIGHT);
-        flow = new FlowView(model);
-        frame = flow.showFrame(c);
-        basin = new BasinView(model);
+        FlowView flow = new FlowView(model);
+        flow.showFrame(c);
+        BasinView basin = new BasinView(model);
         basin.scaleColors(1.0);
         basin.setColorMap(map2d);
-        frame2 = basin.showFrame(c);
+        basin.showFrame(c);
         //*/
-        
-        TextReader.in.readLine();TextReader.in.readLine();System.out.println("stop");
-        c.stop();
-        frame.dispose();
-        frame2.dispose();
-        TextReader.in.readLine();TextReader.in.readLine();System.out.println("kat");
         
         // (6)      Kat
-        ///*
-        WIDTH = 600; HEIGHT = 600;
-        map = new Cat();
-        xmin = 0; ymin = 0; xmax = 1; ymax = 1;
-        model = new GridModel(map, WIDTH, HEIGHT, xmin, ymin, xmax, ymax);
-        c = new Controller(model);
-        map2d = new ColorMap2D(WIDTH, HEIGHT);
-        flow = new FlowView(model);
-        frame = flow.showFrame(c);
-        basin = new BasinView(model);
+        /*
+        final int WIDTH = 600, HEIGHT = 600;
+        Map map = new Cat();
+        final double xmin = 0, ymin = 0, xmax = 1, ymax = 1;
+        GridModel model = new GridModel(map, WIDTH, HEIGHT, xmin, ymin, xmax, ymax);
+        Controller c = new Controller(model);
+        ColorMap map2d = new ColorMap2D(WIDTH, HEIGHT);
+        FlowView flow = new FlowView(model);
+        flow.showFrame(c);
+        BasinView basin = new BasinView(model);
         //basin.scaleColors(1.0);
         basin.setColorMap(map2d);
-        frame2 = basin.showFrame(c);
+        basin.showFrame(c);
         //*/
         
-        TextReader.in.readLine();TextReader.in.readLine();System.out.println("stop");
-        c.stop();
-        frame.dispose();
-        frame2.dispose();
-        TextReader.in.readLine();TextReader.in.readLine();System.out.println("julia");
-        
         // (7)      Julia
-        ///*
-        WIDTH = 600; HEIGHT = 600;
-        map = new Julia(0.31,0.04);
+        /*
+        final int WIDTH = 600, HEIGHT = 600;
+        //Map map = new Julia(0.31,0.04);
         //Map map = new Julia(-0.12, 0.74);
         //Map map = new Julia(0, 1);
         //Map map = new Julia(-0.194, 0.6557);
@@ -153,36 +116,30 @@ public class DynSys {
         //Map map = new Julia(-0.39054, -0.58679);
         //Map map = new Julia(0.11031, -0.67037);
         //Map map = new Julia(-0.481762, -0.531657);
-        //Map map = new Julia(-0.11, c);
-        xmin = -1.5; ymin = -1.5; xmax = 1.5; ymax = 1.5;
-        model = new GridModel(map, WIDTH, HEIGHT, xmin, ymin, xmax, ymax);
-        c = new Controller(model);
-        map2d = new ColorMap2D(WIDTH, HEIGHT);
-        flow = new FlowView(model);
-        frame = flow.showFrame(c);
-        basin = new BasinView(model);
+        //Map map = new Julia(-0.11, 0.6557);
+        final double xmin = -1.5, ymin = -1.5, xmax = 1.5, ymax = 1.5;
+        GridModel model = new GridModel(map, WIDTH, HEIGHT, xmin, ymin, xmax, ymax);
+        Controller c = new Controller(model);
+        ColorMap map2d = new ColorMap2D(WIDTH, HEIGHT);
+        FlowView flow = new FlowView(model);
+        flow.showFrame(c);
+        BasinView basin = new BasinView(model);
         basin.scaleColors(1.0);
         basin.setColorMap(map2d);
-        frame2 = basin.showFrame(c);
+        basin.showFrame(c);
         //*/
         
-        TextReader.in.readLine();TextReader.in.readLine();System.out.println("stop");
-        c.stop();
-        frame.dispose();
-        frame2.dispose();
-        TextReader.in.readLine();TextReader.in.readLine();System.out.println("newton");
-        
         // (8)      Newton
-        ///*
-        WIDTH = 500; HEIGHT = 500;
-        map = new NewtonRaphson(1, 0);
-        xmin = -1.5; ymin = -1.5; xmax = 1.5; ymax = 1.5;
-        model = new GridModel(map, WIDTH, HEIGHT, xmin, ymin, xmax, ymax);
-        c = new Controller(model);
-        map2d = new ColorMap2D(WIDTH, HEIGHT);
-        flow = new FlowView(model);
+        /*
+        final int WIDTH = 500, HEIGHT = 500;
+        Map map = new NewtonRaphson(1, 0);
+        final double xmin = -1.5, ymin = -1.5, xmax = 1.5, ymax = 1.5;
+        GridModel model = new GridModel(map, WIDTH, HEIGHT, xmin, ymin, xmax, ymax);
+        Controller c = new Controller(model);
+        ColorMap map2d = new ColorMap2D(WIDTH, HEIGHT);
+        FlowView flow = new FlowView(model);
         flow.showFrame(c);
-        basin = new BasinView(model);
+        BasinView basin = new BasinView(model);
         basin.scaleColors(2.0);
         basin.setColorMap(map2d);
         basin.showFrame(c);

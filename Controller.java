@@ -10,7 +10,6 @@ public class Controller extends JFrame{
     private AbstractModel model;
     private boolean running;
     private int iterations = 1;
-    public Run run;
     
     private Action reset = new AbstractAction("reset"){
         public void actionPerformed(ActionEvent e){
@@ -50,17 +49,12 @@ public class Controller extends JFrame{
     public void start_stop(){
         running = !running;
         if(running){
-            run = new Run();
+            Run run = new Run();
             run.setPriority(Thread.MIN_PRIORITY);
             run.start();
         }
     }
 
-    public void stop(){
-        running = false;
-        run = null;
-    }
-    
     private class Run extends Thread{
         public void run(){
             while(running){
